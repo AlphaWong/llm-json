@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "callerSideCustomerOrderId": {
+            "type": "string",
+            "pattern": "^[\\S]+"
+        },
+        "quotedTotalFee": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "string",
+                    "pattern": "^[\\S]+"
+                },
+                "currency": {
+                    "type": "string",
+                    "pattern": "^[\\S]+"
+                }
+            },
+            "required": [
+                "amount",
+                "currency"
+            ]
+        }
+    },
+    "allOf": [{
+        "$ref": "order-quotation.json",
+        "description": "Extend from order-quotation.json"
+    }],
+    "properties": {
+        "callerSideCustomerOrderId": {
+            "$ref": "#/definitions/callerSideCustomerOrderId"
+        },
+        "quotedTotalFee": {
+            "$ref": "#/definitions/quotedTotalFee"
+        }
+    },
+    "required": [
+        "quotedTotalFee"
+    ],
+    "type": "object",
+    "additionalProperties": true
+}
