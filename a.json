@@ -1,0 +1,168 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "deliveries": {
+            "items": {
+                "properties": {
+                    "remarks": {
+                        "type": "string"
+                    },
+                    "toContact": {
+                        "properties": {
+                            "name": {
+                                "pattern": "^[\\S]+[\\S]",
+                                "type": "string"
+                            },
+                            "phone": {
+                                "pattern": "^[\\S]+",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "phone",
+                            "name"
+                        ],
+                        "type": "object"
+                    },
+                    "toStop": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "remarks",
+                    "toContact"
+                ],
+                "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
+        "requesterContact": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "phone",
+                "name"
+            ],
+            "type": "object"
+        },
+        "scheduleAt": {
+            "pattern": "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+Z$",
+            "type": "string"
+        },
+        "serviceType": {
+            "pattern": "^[\\S]+",
+            "type": "string"
+        },
+        "specialRequests": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "paymentMethod": {
+            "pattern": "^(CASH|CREDIT)$",
+            "type": "string"
+        },
+        "fleetPriority": {
+            "pattern": "^(NONE|FLEET_FIRST)$",
+            "type": "string"
+        },
+        "stops": {
+            "items": {
+                "properties": {
+                    "addresses": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "patternProperties": {
+                            "^(en_HK|zh_HK|en_PH|en_SG|th_TH|en_TH|zh_TW)$": {
+                                "type": "object",
+                                "properties": {
+                                    "displayString": {
+                                        "type": "string",
+                                        "pattern": "^[\\S]+"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "pattern": "^(HK|PH|SG|TH|TW)$"
+                                    }
+                                },
+                                "required": [
+                                    "displayString",
+                                    "country"
+                                ]
+                            }
+                        }
+                    },
+                    "location": {
+                        "properties": {
+                            "lat": {
+                                "type": "string",
+                                "pattern": "^(\\-?\\d+(\\.\\d+)?)$"
+                            },
+                            "lng": {
+                                "type": "string",
+                                "pattern": "^(\\-?\\d+(\\.\\d+)?)$"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "placeId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "addresses",
+                    "location",
+                    "placeId"
+                ],
+                "type": "object"
+            },
+            "maxItems": 10,
+            "minItems": 2,
+            "type": "array"
+        }
+    },
+    "properties": {
+        "serviceType": {
+            "$ref": "#/definitions/serviceType"
+        },
+        "deliveries": {
+            "$ref": "#/definitions/deliveries"
+        },
+        "stops": {
+            "$ref": "#/definitions/stops"
+        },
+        "requesterContact": {
+            "$ref": "#/definitions/requesterContact"
+        },
+        "specialRequests": {
+            "$ref": "#/definitions/specialRequests"
+        },
+        "scheduleAt": {
+            "$ref": "#/definitions/scheduleAt"
+        },
+        "paymentMethod": {
+            "$ref": "#/definitions/paymentMethod"
+        },
+        "fleetPriority": {
+            "$ref": "#/definitions/fleetPriority"
+        }
+    },
+    "required": [
+        "serviceType",
+        "deliveries",
+        "stops",
+        "requesterContact",
+        "specialRequests",
+        "scheduleAt"
+    ],
+    "type": "object",
+    "additionalProperties": false
+}
