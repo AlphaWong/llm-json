@@ -1,3 +1,5 @@
+left input
+```
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "definitions": {
@@ -10,12 +12,12 @@
                     "toContact": {
                         "properties": {
                             "name": {
-                                "pattern": "^[\\S]+[\\S]",
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^[\\S]+[\\S]"
                             },
                             "phone": {
-                                "pattern": "^[\\S]+",
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^[\\S]+"
                             }
                         },
                         "required": [
@@ -25,7 +27,8 @@
                         "type": "object"
                     },
                     "toStop": {
-                        "type": "integer"
+                        "type": "integer",
+                        "minimum": 1
                     }
                 },
                 "required": [
@@ -40,10 +43,12 @@
         "requesterContact": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+"
                 },
                 "phone": {
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[\\S]+"
                 }
             },
             "required": [
@@ -53,26 +58,33 @@
             "type": "object"
         },
         "scheduleAt": {
-            "pattern": "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+Z$",
-            "type": "string"
+            "type": "string",
+            "pattern": "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+Z$"
         },
         "serviceType": {
-            "pattern": "^[\\S]+",
-            "type": "string"
+            "type": "string",
+            "pattern": "^[\\S]+"
         },
         "specialRequests": {
             "items": {
-                "type": "string"
+                "type": "string",
+                "pattern": "^[\\S]+"
             },
             "type": "array"
         },
         "paymentMethod": {
-            "pattern": "^(CASH|CREDIT)$",
-            "type": "string"
+            "type": "string",
+            "enum": [
+                "CASH",
+                "CREDIT"
+            ]
         },
         "fleetPriority": {
-            "pattern": "^(NONE|FLEET_FIRST)$",
-            "type": "string"
+            "type": "string",
+            "enum": [
+                "NONE",
+                "FLEET_FIRST"
+            ]
         },
         "stops": {
             "items": {
@@ -90,7 +102,13 @@
                                     },
                                     "country": {
                                         "type": "string",
-                                        "pattern": "^(HK|PH|SG|TH|TW)$"
+                                        "enum": [
+                                            "HK",
+                                            "PH",
+                                            "SG",
+                                            "TH",
+                                            "TW"
+                                        ]
                                     }
                                 },
                                 "required": [
@@ -118,9 +136,7 @@
                     }
                 },
                 "required": [
-                    "addresses",
-                    "location",
-                    "placeId"
+                    "addresses"
                 ],
                 "type": "object"
             },
@@ -166,3 +182,4 @@
     "type": "object",
     "additionalProperties": true
 }
+```
