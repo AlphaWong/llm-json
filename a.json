@@ -90,6 +90,7 @@
                     "addresses": {
                         "type": "object",
                         "additionalProperties": false,
+                        "minProperties": 1,
                         "patternProperties": {
                             "^(en_HK|zh_HK|en_PH|en_SG|th_TH|en_TH|zh_TW)$": {
                                 "type": "object",
