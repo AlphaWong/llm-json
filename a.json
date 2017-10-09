@@ -175,7 +175,6 @@
         "deliveries",
         "stops",
         "requesterContact",
-        "specialRequests",
         "scheduleAt"
     ],
     "type": "object",
