@@ -24,7 +24,7 @@
         }
     },
     "allOf": [{
-        "$ref": "https://raw.githubusercontent.com/AlphaWong/llm-json/master/a.json",
+        "$ref": "order-quotation.json",
         "description": "Extend from order-quotation.json"
     }],
     "properties": {
