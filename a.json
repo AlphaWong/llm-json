@@ -7,7 +7,7 @@
         },
         "phone": {
             "type": "string",
-            "pattern": "^\\+\\d+$"
+            "pattern": "^\\+?\\d+$"
         },
         "latlng": {
             "type": "string",
@@ -115,8 +115,7 @@
                                 "type": "object",
                                 "properties": {
                                     "displayString": {
-                                        "type": "string",
-                                        "pattern": "^\\S+"
+                                        "$ref": "#/definitions/name"
                                     },
                                     "country": {
                                         "type": "string",
