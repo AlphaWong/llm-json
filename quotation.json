@@ -3,11 +3,11 @@
     "definitions": {
         "name": {
             "type": "string",
-            "pattern": ".*\\S+"
+            "pattern": ".*.+"
         },
         "phone": {
             "type": "string",
-            "pattern": "^\\+?\\d+$"
+            "pattern": ".*.+"
         },
         "latlng": {
             "type": "string",
