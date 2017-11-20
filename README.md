@@ -8,7 +8,7 @@ Draft v4
 Go to http://www.jsonschemavalidator.net/
 
 # Left panel
-Copy & paste a.json
+Copy & paste order-quotation.json
 
 # Right panel
 ```json
