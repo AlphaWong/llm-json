@@ -3,15 +3,21 @@
     "definitions": {
         "name": {
             "type": "string",
-            "pattern": ".*.+"
+            "pattern": ".+"
+        },
+        "promoCode": {
+            "type": [
+                "string"
+            ],
+            "pattern": ".*"
         },
         "phone": {
             "type": "string",
-            "pattern": ".*.+"
+            "pattern": ".+"
         },
         "latlng": {
             "type": "string",
-            "pattern": "^(\\-?\\d+(\\.\\d+)?)$"
+            "pattern": "^\\-?\\d+(\\.\\d+)?$"
         },
         "deliveries": {
             "items": {
@@ -111,7 +117,7 @@
                         "additionalProperties": false,
                         "minProperties": 1,
                         "patternProperties": {
-                            "^(en_HK|zh_HK|en_PH|en_SG|th_TH|en_TH|zh_TW)$": {
+                            "^(en_HK|zh_HK|en_PH|en_SG|th_TH|en_TH|zh_TW|en_VN|vi_VN)$": {
                                 "type": "object",
                                 "properties": {
                                     "displayString": {
@@ -124,7 +130,8 @@
                                             "PH",
                                             "SG",
                                             "TH",
-                                            "TW"
+                                            "TW",
+                                            "VN"
                                         ]
                                     }
                                 },
@@ -159,7 +166,7 @@
                 ],
                 "type": "object"
             },
-            "maxItems": 10,
+            "maxItems": 17,
             "minItems": 2,
             "type": "array"
         }
@@ -167,6 +174,9 @@
     "properties": {
         "serviceType": {
             "$ref": "#/definitions/serviceType"
+        },
+        "promoCode": {
+            "$ref": "#/definitions/promoCode"
         },
         "deliveries": {
             "$ref": "#/definitions/deliveries"
