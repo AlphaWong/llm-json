@@ -10,7 +10,7 @@
             "properties": {
                 "amount": {
                     "type": "string",
-                    "pattern": "^[\\S]+"
+                    "pattern": "^\\d+(\\.\\d+)?$"
                 },
                 "currency": {
                     "type": "string",
@@ -21,10 +21,13 @@
                 "amount",
                 "currency"
             ]
+        },
+        "sms": {
+            "type": "boolean"
         }
     },
     "allOf": [{
-        "$ref": "https://raw.githubusercontent.com/AlphaWong/llm-json/master/order-quotation.json",
+        "$ref": "order-quotation.json",
         "description": "Extend from order-quotation.json"
     }],
     "properties": {
@@ -33,6 +36,9 @@
         },
         "quotedTotalFee": {
             "$ref": "#/definitions/quotedTotalFee"
+        },
+        "sms": {
+            "$ref": "#/definitions/sms"
         }
     },
     "required": [
